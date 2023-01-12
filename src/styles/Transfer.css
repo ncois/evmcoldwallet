@@ -1,0 +1,27 @@
+.evm-transfer {
+        border-width:1px 2px 3px 2px;
+        border-style:solid;
+        background: #0fe6e6;
+        display: flex;
+        justify-content: space-between;
+        max-width: auto;
+        margin: 1% 5%;
+        padding: 10px 0;
+}
+
+.evm-columns {
+    flex: 1; /* additionally, equal width */
+    padding: 0.5em;
+}
+
+.right {
+    text-align: right;
+}
+
+.left {
+    text-align: left;
+}
+
+.adapt {
+    text-size-adjust: auto;
+}
