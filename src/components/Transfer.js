@@ -65,7 +65,6 @@ function Transfer({ myPrivateKey, isInitialized, chain, api, blockExplorer }) {
         
         const signed_tx = await signer.signTransaction(unsigned_tx)
         setText("https://api." + blockExplorer + "/api?module=proxy&action=eth_sendRawTransaction&hex=" + signed_tx + "&apikey=" + api)
-        console.log(text)
 
     }
 
