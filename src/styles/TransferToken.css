@@ -1,0 +1,39 @@
+.evm-transfer-token {
+    border-width:1px 2px 3px 2px;
+    border-style:solid;
+    background: #c756f8;
+    display: flex;
+    justify-content: space-between;
+    max-width: auto;
+    margin: 1% 20%;
+    padding: 10px 0;
+}
+
+.evm-columns {
+flex: 1; /* additionally, equal width */
+padding: 0.5em;
+}
+
+.right {
+text-align: right;
+}
+
+.left {
+text-align: left;
+}
+
+.center {
+text-align: center;
+}
+
+.adapt {
+text-size-adjust: auto;
+}
+
+.visible {
+visibility: visible;
+}
+
+.hidden {
+visibility: hidden;
+}
