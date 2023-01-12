@@ -5,6 +5,14 @@
     overflow: hidden;
 }
 
+.eth {
+    background: #388ee4;
+}
+
+.bnb {
+    background: #ffe666;
+}
+
 .evm-columns {
     flex: 1; /* additionally, equal width */
     padding: 0.5em;
@@ -24,6 +32,10 @@
 
 .adapt {
     text-size-adjust: auto;
+}
+
+.small {
+    font-size: small;
 }
 
 .topContainer{

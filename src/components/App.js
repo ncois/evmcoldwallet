@@ -1,5 +1,4 @@
 import Banner from "./Banner"
-import ChainSelection from "./ChainSelection"
 import Introduction from "./Introduction"
 import Transfer from "./Transfer"
 import { useState } from "react"
@@ -12,8 +11,7 @@ function App() {
 	return 	(
 		<div>
 			<Banner myPrivateKey={myPrivateKey} setMyPrivateKey={setMyPrivateKey} 
-						  setIsInitialized={setIsInitialized}/>
-			<ChainSelection chain={chain} setChain={setChain} />
+						  setIsInitialized={setIsInitialized} chain={chain} setChain={setChain}/>
 			<Introduction myPrivateKey={myPrivateKey} setMyPrivateKey={setMyPrivateKey} 
 						  isInitialized={isInitialized} setIsInitialized={setIsInitialized} />
 			<Transfer myPrivateKey={myPrivateKey} isInitialized={isInitialized} chain={chain} />
