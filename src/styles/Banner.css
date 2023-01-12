@@ -3,6 +3,7 @@
     font-size: 30px;
     font-family: "Lucida Console", "Courier New", monospace;
     overflow: hidden;
+    padding: 0.5em;
 }
 
 .eth {

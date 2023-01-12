@@ -1,7 +1,7 @@
 import "../styles/Introduction.css"
+import classNames from "classnames";
 
-
-function Introduction({ myPrivateKey, setMyPrivateKey, isInitialized, setIsInitialized }) {
+function Introduction({ myPrivateKey, setMyPrivateKey, isInitialized, setIsInitialized, chain }) {
 
     const onChange = (event) => {
         if (event.target.value.length === 64) {
@@ -23,7 +23,9 @@ function Introduction({ myPrivateKey, setMyPrivateKey, isInitialized, setIsIniti
 	}
 
     return !isInitialized ? (
-        <div>
+        <div className= { classNames({
+            "hidden": parseInt(chain) === 0,
+         })}>
             <div className="evm-rectangle-red">
                 Copy paste your cold wallet private key:
                 <input type="text" size="70" value={myPrivateKey} onChange={onChange} />

@@ -4,7 +4,7 @@ import { ethers } from "ethers"
 import { chainList } from "../datas/chains"
 import classNames from "classnames";
 
-function Banner({ myPrivateKey, setMyPrivateKey, setIsInitialized, chain, setChain }) {
+function Banner({ myPrivateKey, setMyPrivateKey, setIsInitialized, chain, setChain, setApi, setBlockExplorer }) {
     const [myWallet, setMyWallet] = useState("")
 
     useEffect(() => {
@@ -23,24 +23,25 @@ function Banner({ myPrivateKey, setMyPrivateKey, setIsInitialized, chain, setCha
         }
     }, [myPrivateKey])
 
-    function handleChain(id) {
+    function handleChain(id, api, blockExplorer) {
         setChain(id)
-        console.log(chain)
+        setApi(api)
+        setBlockExplorer(blockExplorer)
     }
 
     return (
     <div 
         className= { classNames({
            'evm-banner': true,
-           'eth': chain == 1,
-           'bnb': chain == 56
+           'eth': parseInt(chain) === 1,
+           'bnb': parseInt(chain) === 56
         })}>
         <div className="evm-columns left">Offline EVM Wallet</div>
         <div className="topContainer">
-			{chainList.map(({ id, cover, name }) =>
+			{chainList.map(({ id, cover, name, api, blockExplorer }) =>
 					
 						<div key={id}>
-                            <img onClick={() => handleChain(id)} height={chain === id ? "60" : "40"} src={cover} alt={`${name} cover`} />
+                            <img onClick={() => handleChain(id, api, blockExplorer)} height={chain === id ? "60" : "40"} src={cover} alt={`${name} cover`} />
 						</div>
 				)}
 		</div>
