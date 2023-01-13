@@ -4,6 +4,8 @@ import Transfer from "./Transfer"
 import { useState } from "react"
 import TransferToken from "./TransferToken"
 import Approve from "./Approve"
+import MintVenus from "./MintVenus"
+import RedeemVenus from "./RedeemVenus"
 
 function App() {
 	document.title = "Offline EVM Wallet"
@@ -23,6 +25,8 @@ function App() {
 			<Transfer myPrivateKey={myPrivateKey} isInitialized={isInitialized} chain={chain} api={api} blockExplorer={blockExplorer}/>
 			<TransferToken myPrivateKey={myPrivateKey} isInitialized={isInitialized} chain={chain} api={api} blockExplorer={blockExplorer}/>
 			<Approve myPrivateKey={myPrivateKey} isInitialized={isInitialized} chain={chain} api={api} blockExplorer={blockExplorer}/>
+			<MintVenus myPrivateKey={myPrivateKey} isInitialized={isInitialized} chain={chain} api={api} blockExplorer={blockExplorer}/>
+			<RedeemVenus myPrivateKey={myPrivateKey} isInitialized={isInitialized} chain={chain} api={api} blockExplorer={blockExplorer}/>		
 		</div>
 	)	
 	
