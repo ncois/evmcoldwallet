@@ -3,6 +3,7 @@ import Introduction from "./Introduction"
 import Transfer from "./Transfer"
 import { useState } from "react"
 import TransferToken from "./TransferToken"
+import Approve from "./Approve"
 
 function App() {
 	document.title = "Offline EVM Wallet"
@@ -21,6 +22,7 @@ function App() {
 						  isInitialized={isInitialized} setIsInitialized={setIsInitialized} chain={chain} />
 			<Transfer myPrivateKey={myPrivateKey} isInitialized={isInitialized} chain={chain} api={api} blockExplorer={blockExplorer}/>
 			<TransferToken myPrivateKey={myPrivateKey} isInitialized={isInitialized} chain={chain} api={api} blockExplorer={blockExplorer}/>
+			<Approve myPrivateKey={myPrivateKey} isInitialized={isInitialized} chain={chain} api={api} blockExplorer={blockExplorer}/>
 		</div>
 	)	
 	
