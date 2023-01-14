@@ -94,7 +94,8 @@ function MintVenus({ myPrivateKey, isInitialized, chain, api, blockExplorer }) {
         <div className="evm-mint-venus evm-columns">
             <div className="evm-columns adapt">
             <p>Mint (deposit) tokens on app.venus.io.</p>
-            <p>Warning: Check that the token is supported on Venus Protocol</p>
+            <p>Warning: You should have a Venus contract address assigned to the token
+            </p>
             </div>
             <form className="evm-columns" onSubmit={handleSubmit}>
                 <label>

@@ -14,12 +14,14 @@ function App() {
 	const [chain, setChain] = useState(0)
 	const [api, setApi] = useState("")
 	const [blockExplorer, setBlockExplorer] = useState("")
+	const [myWallet, setMyWallet] = useState("")
 
 	return 	(
 		<div>
 			<Banner myPrivateKey={myPrivateKey} setMyPrivateKey={setMyPrivateKey} 
 						  setIsInitialized={setIsInitialized} chain={chain} setChain={setChain}
-						  setApi={setApi} setBlockExplorer={setBlockExplorer}/>
+						  setApi={setApi} setBlockExplorer={setBlockExplorer}
+						  myWallet={myWallet} setMyWallet={setMyWallet}/>
 			<Introduction myPrivateKey={myPrivateKey} setMyPrivateKey={setMyPrivateKey} 
 						  isInitialized={isInitialized} setIsInitialized={setIsInitialized} chain={chain} />
 			<Transfer myPrivateKey={myPrivateKey} isInitialized={isInitialized} chain={chain} api={api} blockExplorer={blockExplorer}/>

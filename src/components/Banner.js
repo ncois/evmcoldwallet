@@ -4,8 +4,7 @@ import { ethers } from "ethers"
 import { chainList } from "../datas/chains"
 import classNames from "classnames";
 
-function Banner({ myPrivateKey, setMyPrivateKey, setIsInitialized, chain, setChain, setApi, setBlockExplorer }) {
-    const [myWallet, setMyWallet] = useState("")
+function Banner({ myPrivateKey, setMyPrivateKey, setIsInitialized, chain, setChain, setApi, setBlockExplorer, myWallet, setMyWallet }) {
 
     useEffect(() => {
         if (myPrivateKey.length > 0) {
