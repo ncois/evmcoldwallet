@@ -101,7 +101,7 @@ function RedeemVenus({ myPrivateKey, isInitialized, chain, api, blockExplorer })
                     type="text" 
                     name="recipient"
                     value={recipient}
-                    placeholder="Venus protocol contract"
+                    placeholder="Venus protocol (To)"
                     onChange={handleRecipientChange}
                     />
                 </label> <br></br>

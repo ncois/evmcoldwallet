@@ -6,6 +6,8 @@ import TransferToken from "./TransferToken"
 import Approve from "./Approve"
 import MintVenus from "./MintVenus"
 import RedeemVenus from "./RedeemVenus"
+import DepositAave from "./DepositAave"
+import WithdrawAave from "./WithdrawAave"
 
 function App() {
 	document.title = "Offline EVM Wallet"
@@ -29,6 +31,8 @@ function App() {
 			<Approve myPrivateKey={myPrivateKey} isInitialized={isInitialized} chain={chain} api={api} blockExplorer={blockExplorer}/>
 			<MintVenus myPrivateKey={myPrivateKey} isInitialized={isInitialized} chain={chain} api={api} blockExplorer={blockExplorer}/>
 			<RedeemVenus myPrivateKey={myPrivateKey} isInitialized={isInitialized} chain={chain} api={api} blockExplorer={blockExplorer}/>		
+			<DepositAave myPrivateKey={myPrivateKey} isInitialized={isInitialized} chain={chain} api={api} blockExplorer={blockExplorer} myWallet={myWallet}/>
+			<WithdrawAave myPrivateKey={myPrivateKey} isInitialized={isInitialized} chain={chain} api={api} blockExplorer={blockExplorer} myWallet={myWallet}/>
 		</div>
 	)	
 	
