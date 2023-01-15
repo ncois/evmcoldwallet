@@ -101,7 +101,7 @@ function WithdrawAave({ myPrivateKey, isInitialized, chain, api, blockExplorer, 
 
     return (isInitialized && chain == 1) ? (
     <div>
-        <div className="evm-deposit-aave evm-columns">
+        <div className="evm-withdraw-aave evm-columns">
             <div className="evm-columns adapt">
             <p>Withdraw tokens on app.aave.com.</p>
 
