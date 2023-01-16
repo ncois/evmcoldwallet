@@ -7,6 +7,8 @@ function CustomTx({ myPrivateKey, isInitialized, chain, api, blockExplorer }) {
 
     const [text, setText] = useState('')
     const [visible, setVisible] = useState(false)
+    const [txToAccept, setTxToAccept] = useState('')
+    const [confirmDialogVisible, setConfirmDialogVisible] = useState(false)
 
     const [inputFields, setInputFields] = useState([{ 
         recipient: '', 
@@ -49,7 +51,6 @@ function CustomTx({ myPrivateKey, isInitialized, chain, api, blockExplorer }) {
     const handleSubmit = event => {
         event.preventDefault()
 
-        console.log(inputFields)
         let data_is_correct = true
         let overflow = false
         for (let i = 0; i < inputFields.length; i++) {
@@ -109,13 +110,8 @@ function CustomTx({ myPrivateKey, isInitialized, chain, api, blockExplorer }) {
         }
     }
     
-    async function processSubmittedDataFunction(formData) {
+    function processSubmittedDataFunction(formData) {
 
-        let signer
-        try {
-            signer = new ethers.Wallet(myPrivateKey)
-        } catch {}
-        console.log(formData.func_sig)
         const unsigned_tx = {
             chainId: parseInt(chain),
             to: formData.recipient,
@@ -125,10 +121,26 @@ function CustomTx({ myPrivateKey, isInitialized, chain, api, blockExplorer }) {
             nonce: parseInt(formData.nonce),
             data: formData.func_sig
         }
-        
-        const signed_tx = await signer.signTransaction(unsigned_tx)
-        setText("https://api." + blockExplorer + "/api?module=proxy&action=eth_sendRawTransaction&hex=" + signed_tx + "&apikey=" + api)
 
+        setTxToAccept(unsigned_tx)
+    
+    }
+
+    const signTx = () => {
+
+        let signer
+        try {
+            signer = new ethers.Wallet(myPrivateKey)
+        } catch {}
+
+        signer.signTransaction(txToAccept).then((signed_tx) => {
+            setText("https://api." + blockExplorer + "/api?module=proxy&action=eth_sendRawTransaction&hex=" + signed_tx + "&apikey=" + api)
+            resetTxToAccept()
+        })
+    }
+
+    const resetTxToAccept = () => {
+        setTxToAccept('')
     }
 
     const resetText = () => {
@@ -138,6 +150,10 @@ function CustomTx({ myPrivateKey, isInitialized, chain, api, blockExplorer }) {
     useEffect(() => {
         text.length > 0 ? setVisible(true) : setVisible(false)
     }, [text]);
+    
+    useEffect(() => {
+        txToAccept !== '' ? setConfirmDialogVisible(true) : setConfirmDialogVisible(false)
+    }, [txToAccept]);
 
     return isInitialized ? (
     <div>
@@ -145,7 +161,6 @@ function CustomTx({ myPrivateKey, isInitialized, chain, api, blockExplorer }) {
             <div className="evm-columns">
                 <p>Use this to create custom transactions.</p>
                 <p>Address and uint types are supported</p>
-                <p>WARNING: no data verification is processed, check the correctness of what is typed</p>
             </div> 
             <div className="evm-columns">
                 <form onSubmit={handleSubmit}>
@@ -228,17 +243,34 @@ function CustomTx({ myPrivateKey, isInitialized, chain, api, blockExplorer }) {
                             )
                         }
                     })}
-                    <input type="submit" value="Submit and sign" /> 
+                    <input type="submit" value="Submit" /> 
                     
                 </form>
             </div>
         </div>
+        {confirmDialogVisible ? 
+            <div className="center" >
+                {txToAccept !== '' ? 
+                    <div className="test">
+                        <p>Do you want to sign this transaction?</p>
+                        <div className="left">
+                        <p>Recipient: {txToAccept.to}</p>
+                        <p>Value: {ethers.utils.formatEther(txToAccept.value)} ETH</p>
+                        <p>Gas Price: {txToAccept.gasPrice*1e-9} GWei</p>
+                        <p>Gas Limit: {txToAccept.gasLimit}</p>
+                        <p>Nonce: {txToAccept.nonce}</p>
+                        <p>Data: {txToAccept.data}</p>
+                        </div>
+                        <button onClick={signTx}>Sign</button>
+                        <button onClick={resetTxToAccept}>Cancel</button>
+                    </div> : null}
+            </div>
+        : null}
         {visible ? 
             <div className="center" >
                 <QRCode value={text} /> <br></br>
                 <button onClick={resetText}>Hide QR</button>
             </div>
-            
         : null}
     </div>
     ) : 

@@ -9,6 +9,16 @@
         padding: 10px 0;
 }
 
+.test {
+    border-width:1px 2px 3px 2px;
+    border-style:solid;
+    background: rgb(255, 112, 112);
+    max-width: auto;
+    margin: 1% 20%;
+    padding: 10px 10px;
+    overflow-wrap: break-word;
+}
+
 .evm-columns {
     flex: 1; /* additionally, equal width */
     padding: 0.5em;
