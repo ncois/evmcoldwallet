@@ -2,6 +2,7 @@ import "../styles/MintVenus.css"
 import { useState, useEffect } from 'react'
 import { ethers } from "ethers"
 import QRCode from "react-qr-code"
+import Warning from "./Warning"
 
 function MintVenus({ myPrivateKey, isInitialized, chain, api, blockExplorer }) {
 
@@ -12,6 +13,8 @@ function MintVenus({ myPrivateKey, isInitialized, chain, api, blockExplorer }) {
     const [nonce, setNonce] = useState('')
     const [text, setText] = useState('')
     const [visible, setVisible] = useState(false)
+    const [txToAccept, setTxToAccept] = useState('')
+    const [confirmDialogVisible, setConfirmDialogVisible] = useState(false)
 
     const handleRecipientChange = event => {
         setRecipient(event.target.value.replace(/\s/g, ''))
@@ -54,11 +57,6 @@ function MintVenus({ myPrivateKey, isInitialized, chain, api, blockExplorer }) {
     
     async function processSubmittedDataFunction(formData) {
 
-        let signer
-        try {
-            signer = new ethers.Wallet(myPrivateKey)
-        } catch {}
-
         const txtAmount = (amount*10**(parseInt(formData.decimals))).toString(16).padStart(64, 0)
         
         if (txtAmount.length === 64) {
@@ -71,9 +69,9 @@ function MintVenus({ myPrivateKey, isInitialized, chain, api, blockExplorer }) {
                 nonce: parseInt(formData.nonce),
                 data: "0xa0712d68" + txtAmount
             }
+
+            setTxToAccept(unsigned_tx)
             
-            const signed_tx = await signer.signTransaction(unsigned_tx)
-            setText("https://api." + blockExplorer + "/api?module=proxy&action=eth_sendRawTransaction&hex=" + signed_tx + "&apikey=" + api)
         } else {
             alert("Amount: overflow")
             resetText()
@@ -146,6 +144,8 @@ function MintVenus({ myPrivateKey, isInitialized, chain, api, blockExplorer }) {
                 <input type="submit" value="Submit and sign" /> 
             </form>
         </div>
+        <Warning txToAccept={txToAccept} setTxToAccept={setTxToAccept} confirmDialogVisible={confirmDialogVisible} setConfirmDialogVisible={setConfirmDialogVisible}
+                  setText={setText} myPrivateKey={myPrivateKey} blockExplorer={blockExplorer} api={api}/>
         {visible ? 
             <div className="center" >
                 <QRCode value={text} /> <br></br>
