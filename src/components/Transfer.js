@@ -13,16 +13,16 @@ function Transfer({ myPrivateKey, isInitialized, chain, api, blockExplorer }) {
     const [visible, setVisible] = useState(false)
 
     const handleRecipientChange = event => {
-        setRecipient(event.target.value)
+        setRecipient(event.target.value.replace(/\s/g, ''))
     }
     const handleValueChange = event => { 
-        setValue(event.target.value)
+        setValue(event.target.value.replace(/\s/g, ''))
     }
     const handleGasPriceChange = event => {
-        setGasPrice(event.target.value)
+        setGasPrice(event.target.value.replace(/\s/g, ''))
     }
     const handleNonceChange = event => {
-        setNonce(event.target.value)
+        setNonce(event.target.value.replace(/\s/g, ''))
     }
 
     const handleSubmit = event => {

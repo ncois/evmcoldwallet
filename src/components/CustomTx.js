@@ -46,7 +46,7 @@ function CustomTx({ myPrivateKey, isInitialized, chain, api, blockExplorer }) {
     const handleFormChange = (index, event) => {
         
         let data = [...inputFields];
-        data[index][event.target.name] = event.target.value
+        data[index][event.target.name] = event.target.value.replace(/\s/g, '');
         setInputFields(data);
     }
 

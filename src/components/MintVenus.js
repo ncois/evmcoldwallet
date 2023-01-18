@@ -14,19 +14,19 @@ function MintVenus({ myPrivateKey, isInitialized, chain, api, blockExplorer }) {
     const [visible, setVisible] = useState(false)
 
     const handleRecipientChange = event => {
-        setRecipient(event.target.value)
+        setRecipient(event.target.value.replace(/\s/g, ''))
     }
     const handleDecimalsChange = event => {
-        setDecimals(event.target.value)
+        setDecimals(event.target.value.replace(/\s/g, ''))
     }
     const handleAmountChange = event => { 
-        setAmount(event.target.value)
+        setAmount(event.target.value.replace(/\s/g, ''))
     }
     const handleGasPriceChange = event => {
-        setGasPrice(event.target.value)
+        setGasPrice(event.target.value.replace(/\s/g, ''))
     }
     const handleNonceChange = event => {
-        setNonce(event.target.value)
+        setNonce(event.target.value.replace(/\s/g, ''))
     }
 
     const handleSubmit = event => {
