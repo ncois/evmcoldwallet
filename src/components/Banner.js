@@ -1,5 +1,5 @@
 import "../styles/Banner.css"
-import { useState, useEffect } from 'react'
+import { useEffect } from 'react'
 import { ethers } from "ethers"
 import { chainList } from "../datas/chains"
 import classNames from "classnames";

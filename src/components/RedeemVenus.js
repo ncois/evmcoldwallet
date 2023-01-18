@@ -89,7 +89,7 @@ function RedeemVenus({ myPrivateKey, isInitialized, chain, api, blockExplorer })
         text.length > 0 ? setVisible(true) : setVisible(false)
       }, [text]);
 
-    return (isInitialized && chain == 56) ? (
+    return (isInitialized && parseInt(chain) === 56) ? (
     <div>
         <div className="evm-redeem-venus evm-columns">
             <div className="evm-columns adapt">

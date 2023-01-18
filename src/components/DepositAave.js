@@ -99,7 +99,7 @@ function DepositAave({ myPrivateKey, isInitialized, chain, api, blockExplorer, m
         text.length > 0 ? setVisible(true) : setVisible(false)
       }, [text]);
 
-    return (isInitialized && chain == 1) ? (
+    return (isInitialized && parseInt(chain) === 1) ? (
     <div>
         <div className="evm-deposit-aave evm-columns">
             <div className="evm-columns adapt">
