@@ -2,6 +2,7 @@ import "../styles/CustomTx.css"
 import { useState, useEffect } from 'react'
 import { ethers } from "ethers"
 import QRCode from "react-qr-code"
+import Warning from "./Warning"
 
 function CustomTx({ myPrivateKey, isInitialized, chain, api, blockExplorer }) {
 
@@ -43,8 +44,9 @@ function CustomTx({ myPrivateKey, isInitialized, chain, api, blockExplorer }) {
     }
 
     const handleFormChange = (index, event) => {
+        
         let data = [...inputFields];
-        data[index][event.target.name] = event.target.value;
+        data[index][event.target.name] = event.target.value
         setInputFields(data);
     }
 
@@ -126,23 +128,6 @@ function CustomTx({ myPrivateKey, isInitialized, chain, api, blockExplorer }) {
     
     }
 
-    const signTx = () => {
-
-        let signer
-        try {
-            signer = new ethers.Wallet(myPrivateKey)
-        } catch {}
-
-        signer.signTransaction(txToAccept).then((signed_tx) => {
-            setText("https://api." + blockExplorer + "/api?module=proxy&action=eth_sendRawTransaction&hex=" + signed_tx + "&apikey=" + api)
-            resetTxToAccept()
-        })
-    }
-
-    const resetTxToAccept = () => {
-        setTxToAccept('')
-    }
-
     const resetText = () => {
         setText("")
     }
@@ -150,10 +135,6 @@ function CustomTx({ myPrivateKey, isInitialized, chain, api, blockExplorer }) {
     useEffect(() => {
         text.length > 0 ? setVisible(true) : setVisible(false)
     }, [text]);
-    
-    useEffect(() => {
-        txToAccept !== '' ? setConfirmDialogVisible(true) : setConfirmDialogVisible(false)
-    }, [txToAccept]);
 
     return isInitialized ? (
     <div>
@@ -248,24 +229,8 @@ function CustomTx({ myPrivateKey, isInitialized, chain, api, blockExplorer }) {
                 </form>
             </div>
         </div>
-        {confirmDialogVisible ? 
-            <div className="center" >
-                {txToAccept !== '' ? 
-                    <div className="test">
-                        <p>Do you want to sign this transaction?</p>
-                        <div className="left">
-                        <p>Recipient: {txToAccept.to}</p>
-                        <p>Value: {ethers.utils.formatEther(txToAccept.value)} ETH</p>
-                        <p>Gas Price: {txToAccept.gasPrice*1e-9} GWei</p>
-                        <p>Gas Limit: {txToAccept.gasLimit}</p>
-                        <p>Nonce: {txToAccept.nonce}</p>
-                        <p>Data: {txToAccept.data}</p>
-                        </div>
-                        <button onClick={signTx}>Sign</button>
-                        <button onClick={resetTxToAccept}>Cancel</button>
-                    </div> : null}
-            </div>
-        : null}
+        <Warning txToAccept={txToAccept} setTxToAccept={setTxToAccept} confirmDialogVisible={confirmDialogVisible} setConfirmDialogVisible={setConfirmDialogVisible}
+                  setText={setText} myPrivateKey={myPrivateKey} blockExplorer={blockExplorer} api={api}/>
         {visible ? 
             <div className="center" >
                 <QRCode value={text} /> <br></br>
