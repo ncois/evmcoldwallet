@@ -1,7 +1,7 @@
 import "../styles/MintVenus.css"
 import { useState, useEffect } from 'react'
 import { ethers } from "ethers"
-import QRCode from "react-qr-code"
+import ShowQRCode from "./ShowQRCode"
 import Warning from "./Warning"
 
 function MintVenus({ myPrivateKey, isInitialized, chain, api, blockExplorer }) {
@@ -59,7 +59,7 @@ function MintVenus({ myPrivateKey, isInitialized, chain, api, blockExplorer }) {
 
         const txtAmount = (amount*10**(parseInt(formData.decimals))).toString(16).padStart(64, 0)
         
-        if (txtAmount.length === 64) {
+        if (txtAmount.length === 64 && isFinite(amount*10**(parseInt(formData.decimals)))) {
             const unsigned_tx = {
                 chainId: parseInt(chain),
                 to: formData.recipient,
@@ -74,16 +74,9 @@ function MintVenus({ myPrivateKey, isInitialized, chain, api, blockExplorer }) {
             
         } else {
             alert("Amount: overflow")
-            resetText()
         }
 
-    }
-
-    const resetText = () => {
-        setText("")
-    }
-
-    useEffect(() => {
+    }    useEffect(() => {
         text.length > 0 ? setVisible(true) : setVisible(false)
       }, [text]);
 
@@ -146,13 +139,7 @@ function MintVenus({ myPrivateKey, isInitialized, chain, api, blockExplorer }) {
         </div>
         <Warning txToAccept={txToAccept} setTxToAccept={setTxToAccept} confirmDialogVisible={confirmDialogVisible} setConfirmDialogVisible={setConfirmDialogVisible}
                   setText={setText} myPrivateKey={myPrivateKey} blockExplorer={blockExplorer} api={api}/>
-        {visible ? 
-            <div className="center" >
-                <QRCode value={text} /> <br></br>
-                <button onClick={resetText}>Hide QR</button>
-            </div>
-            
-        : null}
+        <ShowQRCode visible={visible} setVisible={setVisible} text={text} setText={setText} />
     </div>
     ) : 
     (null)

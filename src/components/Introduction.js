@@ -1,4 +1,5 @@
 import "../styles/Introduction.css"
+import "../styles/Global.css"
 import classNames from "classnames";
 
 function Introduction({ myPrivateKey, setMyPrivateKey, isInitialized, setIsInitialized, chain }) {
@@ -37,8 +38,10 @@ function Introduction({ myPrivateKey, setMyPrivateKey, isInitialized, setIsIniti
         <div>
             <div className="evm-rectangle-green">
                 The private key is correct, you can sign transactions.
-                <button onClick={restart}>Enter another key</button>
-                <button onClick={showPK}>Show key in console</button>
+                <div>
+                    <button className="evm-button-bad" onClick={restart}>Enter another key</button>
+                    <button className="evm-button-good" onClick={showPK}>Show key in console</button>
+                </div>
             </div>
         </div>
     )

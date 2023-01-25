@@ -1,0 +1,60 @@
+.evm-button-good {
+    color: white;
+    cursor: pointer;
+    padding: 0px 0.5rem;
+    text-align: center;
+    background-color: rgb(0, 112, 243);
+    box-shadow: rgb(0 118 255 / 39%) 0px 4px 14px 0px;
+    opacity: 1;
+    width:175px;
+    height:40px;
+    margin:10px;
+    border-radius:10px;
+    font-family: Inter, sans-serif;
+    font-weight: bold;
+}
+
+.evm-button-bad {
+    color: white;
+    cursor: pointer;
+    padding: 0px 0.5rem;
+    text-align: center;
+    background-color: rgb(239, 51, 18);
+    box-shadow: rgba(255, 38, 0, 0.39) 0px 4px 14px 0px;
+    opacity: 1;
+    width:175px;
+    height:40px;
+    margin:10px;
+    border-radius:10px;
+    font-family: Inter, sans-serif;
+    font-weight: bold;
+}
+
+.evm-columns {
+    flex: 1; /* additionally, equal width */
+    padding: 0.5em;
+}
+
+.right {
+    text-align: right;
+}
+
+.left {
+    text-align: left;
+}
+
+.center {
+    text-align: center;
+}
+
+.adapt {
+    text-size-adjust: auto;
+}
+
+.visible {
+    visibility: visible;
+}
+
+.hidden {
+    visibility: hidden;
+}

@@ -1,7 +1,7 @@
 import "../styles/DepositAave.css"
 import { useState, useEffect } from 'react'
 import { ethers } from "ethers"
-import QRCode from "react-qr-code"
+import ShowQRCode from "./ShowQRCode"
 import Warning from "./Warning"
 
 function DepositAave({ myPrivateKey, isInitialized, chain, api, blockExplorer, myWallet }) {
@@ -68,7 +68,7 @@ function DepositAave({ myPrivateKey, isInitialized, chain, api, blockExplorer, m
         const txtWallet = myWallet.substring(2).padStart(64, 0)
         const txtToken = formData.token.substring(2).padStart(64, 0)
 
-        if (txtAmount.length === 64) {
+        if (txtAmount.length === 64 && isFinite(amount*10**(parseInt(formData.decimals)))) {
             const unsigned_tx = {
                 chainId: parseInt(chain),
                 to: formData.recipient,
@@ -83,13 +83,8 @@ function DepositAave({ myPrivateKey, isInitialized, chain, api, blockExplorer, m
 
         } else {
             alert("Amount: overflow")
-            resetText()
         }
 
-    }
-
-    const resetText = () => {
-        setText("")
     }
 
     useEffect(() => {
@@ -163,13 +158,7 @@ function DepositAave({ myPrivateKey, isInitialized, chain, api, blockExplorer, m
         </div>
         <Warning txToAccept={txToAccept} setTxToAccept={setTxToAccept} confirmDialogVisible={confirmDialogVisible} setConfirmDialogVisible={setConfirmDialogVisible}
                   setText={setText} myPrivateKey={myPrivateKey} blockExplorer={blockExplorer} api={api}/>
-        {visible ? 
-            <div className="center" >
-                <QRCode value={text} /> <br></br>
-                <button onClick={resetText}>Hide QR</button>
-            </div>
-            
-        : null}
+        <ShowQRCode visible={visible} setVisible={setVisible} text={text} setText={setText} />
     </div>
     ) : 
     (null)

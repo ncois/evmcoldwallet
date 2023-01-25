@@ -13,7 +13,7 @@ function Banner({ myPrivateKey, setMyPrivateKey, setIsInitialized, chain, setCha
                 setMyWallet(add)
             }
             catch (e) {
-                alert(e)
+                alert("Error while initializing wallet: " + e.message)
                 setIsInitialized(false)
                 setMyPrivateKey("")
             }
