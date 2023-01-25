@@ -18,7 +18,7 @@ function ShowQRCode({ text, setText, visible, setVisible }) {
             {visible ? 
             <div className="center" >
                 <QRCode value={text} /> <br></br>
-                <button className="evm-button-good" onClick={resetText}>Hide QR</button>
+                <button className="evm-button good" onClick={resetText}>Hide QR</button>
             </div>
             
         : null}

@@ -110,7 +110,7 @@ function Transfer({ myPrivateKey, isInitialized, chain, api, blockExplorer }) {
                     onChange={handleNonceChange}
                     />
                 </label> <br></br>
-                <input type="submit" value="Submit" /> 
+                <input className="evm-button good" type="submit" value="Submit" /> 
             </form>
         </div>
         <Warning txToAccept={txToAccept} setTxToAccept={setTxToAccept} confirmDialogVisible={confirmDialogVisible} setConfirmDialogVisible={setConfirmDialogVisible}

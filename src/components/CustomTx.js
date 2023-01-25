@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react'
 import { ethers } from "ethers"
 import ShowQRCode from "./ShowQRCode"
 import Warning from "./Warning"
+import del from '../assets/del.png'
 
 function CustomTx({ myPrivateKey, isInitialized, chain, api, blockExplorer }) {
 
@@ -199,8 +200,6 @@ function CustomTx({ myPrivateKey, isInitialized, chain, api, blockExplorer }) {
                                         onChange={event => handleFormChange(index, event)}
                                         />
                                     </label> <br></br>
-                                    <button type="button" onClick={addAddress}>Add a parameter (address)</button>
-                                    <button type="button" onClick={addNumber}>Add a parameter (number)</button>
                                 </div>
                             )
                         } else {
@@ -214,15 +213,19 @@ function CustomTx({ myPrivateKey, isInitialized, chain, api, blockExplorer }) {
                                         placeholder={input.type === 'number' ? 'Param ' + index  + ': number': 'Param ' + index  + ': address'}
                                         onChange={event => handleFormChange(index, event)}
                                         />
-                                    </label> <br></br>
-                                    <button type="button" onClick={() => removeFields(index)}>Remove</button>
+                                    </label>
+                                    <img src={del} width="10" className="evm-button" type="button" onClick={() => removeFields(index)}></img>
                                 </div>
                             )
                         }
                     })}
-                    <input type="submit" value="Submit" /> 
+                    <input className="evm-button good" type="submit" value="Submit" /> 
                     
                 </form>
+            </div>
+            <div className="evm-columns">
+                <button type="button" className="evm-button good" onClick={addAddress}>Add an address</button>
+                <button type="button" className="evm-button good" onClick={addNumber}>Add a number</button>
             </div>
         </div>
         <Warning txToAccept={txToAccept} setTxToAccept={setTxToAccept} confirmDialogVisible={confirmDialogVisible} setConfirmDialogVisible={setConfirmDialogVisible}

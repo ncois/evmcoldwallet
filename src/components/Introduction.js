@@ -39,8 +39,8 @@ function Introduction({ myPrivateKey, setMyPrivateKey, isInitialized, setIsIniti
             <div className="evm-rectangle-green">
                 The private key is correct, you can sign transactions.
                 <div>
-                    <button className="evm-button-bad" onClick={restart}>Enter another key</button>
-                    <button className="evm-button-good" onClick={showPK}>Show key in console</button>
+                    <button className="evm-button bad" onClick={restart}>Enter another key</button>
+                    <button className="evm-button good" onClick={showPK}>Show key in console</button>
                 </div>
             </div>
         </div>
