@@ -40,8 +40,8 @@ function Warning({ txToAccept, setTxToAccept, confirmDialogVisible, setConfirmDi
                         <p>Nonce: {txToAccept.nonce}</p>
                         <p>Data: {txToAccept.data}</p>
                         </div>
-                        <button onClick={signTx}>Sign</button>
-                        <button onClick={resetTxToAccept}>Cancel</button>
+                        <button className="evm-button bad" onClick={signTx}>Sign</button>
+                        <button className="evm-button good"onClick={resetTxToAccept}>Cancel</button>
                     </div> : null}
             </div>
         : null}

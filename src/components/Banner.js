@@ -28,6 +28,11 @@ function Banner({ myPrivateKey, setMyPrivateKey, setIsInitialized, chain, setCha
         setBlockExplorer(blockExplorer)
     }
 
+    function restart() {
+        setIsInitialized(false)
+        setMyPrivateKey("")
+    }
+
     return (
     <div 
         className= { classNames({
@@ -44,10 +49,15 @@ function Banner({ myPrivateKey, setMyPrivateKey, setIsInitialized, chain, setCha
 						</div>
 				)}
 		</div>
-        <div className="evm-columns right adapt">
+        <div className="evm-columns right">
             {myWallet === "" ? 
             (<div>No wallet connected</div>):
-            (<div className="small">{myWallet}</div>)}
+            (<div className="small">
+                {myWallet}
+                <div>
+                    <button className="evm-button bad" onClick={restart}>Enter another key</button>
+                </div>
+            </div>)}
         </div>
     </div>
     )

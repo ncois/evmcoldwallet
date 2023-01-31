@@ -71,7 +71,7 @@ function Transfer({ myPrivateKey, isInitialized, chain, api, blockExplorer }) {
 
     return isInitialized ? (
     <div>
-        <div className="evm-transfer">
+        <div className="evm-rectangle cyan">
             <p className="evm-columns">Transfer Ether.</p>
             <form className="evm-columns" onSubmit={handleSubmit}>
                 <label>
@@ -97,6 +97,7 @@ function Transfer({ myPrivateKey, isInitialized, chain, api, blockExplorer }) {
                     type="number" 
                     name="gasPrice"
                     value={gasPrice}
+                    max="100"
                     placeholder="Gas Price (GWei)"
                     onChange={handleGasPriceChange}
                     />
@@ -106,6 +107,7 @@ function Transfer({ myPrivateKey, isInitialized, chain, api, blockExplorer }) {
                     type="number" 
                     name="nonce"
                     value={nonce}
+                    max="115792089237316195423570985008687907853269984665640564039457584007913129639935"
                     placeholder="Nonce"
                     onChange={handleNonceChange}
                     />

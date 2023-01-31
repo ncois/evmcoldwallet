@@ -8,6 +8,27 @@
     box-shadow: rgba(255, 38, 0, 0.39) 0px 4px 14px 0px;
 }
 
+.evm-rectangle-large {
+    border-width:1px 2px 3px 2px;
+    border-style:solid;
+    display: flex;
+    justify-content: space-between;
+    max-width: 700px;
+    margin: 1% auto auto auto;
+    padding: 10px 10px;
+}
+
+.evm-rectangle {
+    border-width:1px 2px 3px 2px;
+    border-style:solid;
+    display: flex;
+    justify-content: space-between;
+    max-width: 500px;
+    margin: 1% auto auto auto;
+    padding: 10px 10px;
+}
+
+
 .evm-button {
     color: white;
     cursor: pointer;
@@ -25,6 +46,11 @@
 .evm-columns {
     flex: 1; /* additionally, equal width */
     padding: 0.5em;
+}
+
+.topContainer{
+    display: flex;
+    flex-direction: row;
 }
 
 .right {

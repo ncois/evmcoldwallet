@@ -135,7 +135,7 @@ function CustomTx({ myPrivateKey, isInitialized, chain, api, blockExplorer }) {
 
     return isInitialized ? (
     <div>
-        <div className="evm-custom-tx">
+        <div className="evm-rectangle grey">
             <div className="evm-columns">
                 <p>Use this to create custom transactions.</p>
                 <p>Address and uint types are supported</p>
@@ -169,6 +169,7 @@ function CustomTx({ myPrivateKey, isInitialized, chain, api, blockExplorer }) {
                                         type="number" 
                                         name="gasPrice"
                                         value={input.gasPrice}
+                                        max="100"
                                         placeholder="Gas Price (GWei)"
                                         onChange={event => handleFormChange(index, event)}
                                         />
@@ -178,6 +179,7 @@ function CustomTx({ myPrivateKey, isInitialized, chain, api, blockExplorer }) {
                                         type="number" 
                                         name="gasLimit"
                                         value={input.gasLimit}
+                                        max="10000000"
                                         placeholder="Gas Limit"
                                         onChange={event => handleFormChange(index, event)}
                                         />
@@ -187,6 +189,7 @@ function CustomTx({ myPrivateKey, isInitialized, chain, api, blockExplorer }) {
                                         type="number" 
                                         name="nonce"
                                         value={input.nonce}
+                                        max="115792089237316195423570985008687907853269984665640564039457584007913129639935"
                                         placeholder="Nonce"
                                         onChange={event => handleFormChange(index, event)}
                                         />

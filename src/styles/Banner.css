@@ -14,32 +14,6 @@
     background: #ffe666;
 }
 
-.evm-columns {
-    flex: 1; /* additionally, equal width */
-    padding: 0.5em;
-  }
-
-.right {
-    text-align: right;
-}
-
-.left {
-    text-align: left;
-}
-
-.center {
-    text-align: center;
-}
-
-.adapt {
-    text-size-adjust: auto;
-}
-
 .small {
     font-size: small;
 }
-
-.topContainer{
-    display: flex;
-    flex-direction: row;
-  }

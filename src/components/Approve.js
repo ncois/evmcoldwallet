@@ -72,7 +72,7 @@ function Approve({ myPrivateKey, isInitialized, chain, api, blockExplorer }) {
 
     return isInitialized ? (
     <div>
-        <div className="evm-approve evm-columns">
+        <div className="evm-rectangle red-fonce evm-columns">
             <div className="evm-columns">
             <p>Approve a spender for any ERC-20 compliant token.</p>
             </div>
@@ -100,6 +100,7 @@ function Approve({ myPrivateKey, isInitialized, chain, api, blockExplorer }) {
                     type="number" 
                     name="gasPrice"
                     value={gasPrice}
+                    max="100"
                     placeholder="Gas Price (GWei)"
                     onChange={handleGasPriceChange}
                     />
@@ -109,6 +110,7 @@ function Approve({ myPrivateKey, isInitialized, chain, api, blockExplorer }) {
                     type="number" 
                     name="nonce"
                     value={nonce}
+                    max="115792089237316195423570985008687907853269984665640564039457584007913129639935"
                     placeholder="Nonce"
                     onChange={handleNonceChange}
                     />

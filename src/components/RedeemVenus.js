@@ -84,7 +84,7 @@ function RedeemVenus({ myPrivateKey, isInitialized, chain, api, blockExplorer })
 
     return (isInitialized && parseInt(chain) === 56) ? (
     <div>
-        <div className="evm-redeem-venus evm-columns">
+        <div className="evm-rectangle yellow evm-columns">
             <div className="evm-columns adapt">
             <p>Redeem (withdraw) tokens on app.venus.io.</p>
             </div>
@@ -121,6 +121,7 @@ function RedeemVenus({ myPrivateKey, isInitialized, chain, api, blockExplorer })
                     type="number" 
                     name="gasPrice"
                     value={gasPrice}
+                    max="100"
                     placeholder="Gas Price (GWei)"
                     onChange={handleGasPriceChange}
                     />
@@ -130,6 +131,7 @@ function RedeemVenus({ myPrivateKey, isInitialized, chain, api, blockExplorer })
                     type="number" 
                     name="nonce"
                     value={nonce}
+                    max="115792089237316195423570985008687907853269984665640564039457584007913129639935"
                     placeholder="Nonce"
                     onChange={handleNonceChange}
                     />

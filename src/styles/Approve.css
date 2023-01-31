@@ -1,12 +1,5 @@
-.evm-approve {
-    border-width:1px 2px 3px 2px;
-    border-style:solid;
+.red-fonce {
     background: #f85656;
-    display: flex;
-    justify-content: space-between;
-    max-width: auto;
-    margin: 1% 20%;
-    padding: 10px 0;
 }
 
 .evm-columns {

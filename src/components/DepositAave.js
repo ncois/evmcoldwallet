@@ -93,7 +93,7 @@ function DepositAave({ myPrivateKey, isInitialized, chain, api, blockExplorer, m
 
     return (isInitialized && parseInt(chain) === 1) ? (
     <div>
-        <div className="evm-deposit-aave evm-columns">
+        <div className="evm-rectangle blue evm-columns">
             <div className="evm-columns adapt">
             <p>Deposit tokens on app.aave.com.</p>
 
@@ -140,6 +140,7 @@ function DepositAave({ myPrivateKey, isInitialized, chain, api, blockExplorer, m
                     type="number" 
                     name="gasPrice"
                     value={gasPrice}
+                    max="100"
                     placeholder="Gas Price (GWei)"
                     onChange={handleGasPriceChange}
                     />
@@ -149,6 +150,7 @@ function DepositAave({ myPrivateKey, isInitialized, chain, api, blockExplorer, m
                     type="number" 
                     name="nonce"
                     value={nonce}
+                    max="115792089237316195423570985008687907853269984665640564039457584007913129639935"
                     placeholder="Nonce"
                     onChange={handleNonceChange}
                     />

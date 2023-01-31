@@ -9,6 +9,7 @@ import RedeemVenus from "./RedeemVenus"
 import DepositAave from "./DepositAave"
 import WithdrawAave from "./WithdrawAave"
 import CustomTx from "./CustomTx"
+import "../styles/Global.css"
 
 function App() {
 	document.title = "Offline EVM Wallet"
