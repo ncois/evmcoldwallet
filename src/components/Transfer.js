@@ -82,7 +82,7 @@ function Transfer({ myPrivateKey, isInitialized, chain, api, blockExplorer }) {
                     placeholder="Recipient"
                     onChange={handleRecipientChange}
                     />
-                </label> <br></br>
+                </label> 
                 <label>
                     <input 
                     type="text" 
@@ -91,7 +91,7 @@ function Transfer({ myPrivateKey, isInitialized, chain, api, blockExplorer }) {
                     placeholder="Value"
                     onChange={handleValueChange}        
                     />
-                </label> <br></br>
+                </label>
                 <label>
                     <input 
                     type="number" 
@@ -101,7 +101,7 @@ function Transfer({ myPrivateKey, isInitialized, chain, api, blockExplorer }) {
                     placeholder="Gas Price (GWei)"
                     onChange={handleGasPriceChange}
                     />
-                </label> <br></br>
+                </label> 
                 <label>
                     <input 
                     type="number" 
