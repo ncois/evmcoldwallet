@@ -2,6 +2,8 @@ import "../styles/CustomTx.css"
 import { useState, useEffect } from 'react'
 import { ethers } from "ethers"
 import ShowQRCode from "./ShowQRCode"
+import QrScanner from "./QrScanner"
+import QrToClipboard from "./QrToClipboard"
 import Warning from "./Warning"
 import del from '../assets/del.png'
 
@@ -21,6 +23,12 @@ function CustomTx({ myPrivateKey, isInitialized, chain, api, blockExplorer }) {
         func_sig: ''
         }
     ])
+
+    const setRecipient = (text) => {
+        let data = [...inputFields];
+        data[0].recipient = text;
+        setInputFields(data);
+    }
 
     const addNumber = () => {
         let newfield = { 
@@ -154,7 +162,7 @@ function CustomTx({ myPrivateKey, isInitialized, chain, api, blockExplorer }) {
                                         placeholder="Recipient (To)"
                                         onChange={event => handleFormChange(index, event)}
                                         />
-                                    </label> <br></br>
+                                    </label> <QrScanner setData={setRecipient} />
                                     <label>
                                         <input 
                                         type="text" 
@@ -217,8 +225,10 @@ function CustomTx({ myPrivateKey, isInitialized, chain, api, blockExplorer }) {
                                         onChange={event => handleFormChange(index, event)}
                                         />
                                     </label>
-                                    <img src={del} width="10" className="evm-button" type="button" onClick={() => removeFields(index)}></img>
+                                    <img alt="cancel" src={del} width="10" className="evm-button" type="button" onClick={() => removeFields(index)}></img>
+                                    
                                 </div>
+
                             )
                         }
                     })}
@@ -229,6 +239,7 @@ function CustomTx({ myPrivateKey, isInitialized, chain, api, blockExplorer }) {
             <div className="evm-columns">
                 <button type="button" className="evm-button good" onClick={addAddress}>Add an address</button>
                 <button type="button" className="evm-button good" onClick={addNumber}>Add a number</button>
+                <QrToClipboard/>
             </div>
         </div>
         <Warning txToAccept={txToAccept} setTxToAccept={setTxToAccept} confirmDialogVisible={confirmDialogVisible} setConfirmDialogVisible={setConfirmDialogVisible}

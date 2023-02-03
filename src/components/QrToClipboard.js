@@ -1,14 +1,13 @@
 import { QrReader } from "react-qr-reader"
 import { useState } from "react"
 
-function QrScanner( {setData} ) {
+function QrToClipboard() {
 
     const [startScan, setStartScan] = useState(false)
 
     const handleScan = async (scanData) => {
         if (scanData && scanData !== "") {
             navigator.clipboard.writeText(scanData.text)
-            setData(scanData.text)
             setStartScan(false)
         }
     }
@@ -22,7 +21,7 @@ function QrScanner( {setData} ) {
           <button type="button" className={startScan ? "evm-button bad" : "evm-button neutral"} onClick={() => {
             setStartScan(!startScan)
             }}>
-            {startScan ? "Cancel" : "QR Scan"}
+            {startScan ? "Cancel" : "QR Scan To Clipboard"}
             </button>
             {startScan && (
             <>
@@ -38,4 +37,4 @@ function QrScanner( {setData} ) {
       )
 }
 
-export default QrScanner
+export default QrToClipboard

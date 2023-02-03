@@ -2,6 +2,7 @@ import "../styles/WithdrawAave.css"
 import { useState, useEffect } from 'react'
 import { ethers } from "ethers"
 import ShowQRCode from "./ShowQRCode"
+import QrScanner from "./QrScanner"
 import Warning from "./Warning"
 
 function WithdrawAave({ myPrivateKey, isInitialized, chain, api, blockExplorer, myWallet }) {
@@ -107,7 +108,7 @@ function WithdrawAave({ myPrivateKey, isInitialized, chain, api, blockExplorer, 
                     placeholder="AAVE protocol (To)"
                     onChange={handleRecipientChange}
                     />
-                </label> <br></br>
+                </label> <QrScanner setData={setRecipient} /> <br></br>
                 <label>
                     <input 
                     type="text" 
@@ -125,7 +126,7 @@ function WithdrawAave({ myPrivateKey, isInitialized, chain, api, blockExplorer, 
                     placeholder="Token address"
                     onChange={handleTokenChange}        
                     />
-                </label> <br></br>
+                </label> <QrScanner setData={setToken} /> <br></br>
                 <label>
                     <input 
                     type="text" 

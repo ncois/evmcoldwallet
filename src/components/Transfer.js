@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react'
 import { ethers } from "ethers"
 import ShowQRCode from "./ShowQRCode"
 import Warning from "./Warning"
+import QrScanner from "./QrScanner"
 
 function Transfer({ myPrivateKey, isInitialized, chain, api, blockExplorer }) {
 
@@ -82,7 +83,7 @@ function Transfer({ myPrivateKey, isInitialized, chain, api, blockExplorer }) {
                     placeholder="Recipient"
                     onChange={handleRecipientChange}
                     />
-                </label> 
+                </label> <QrScanner setData={setRecipient} /> <br></br>
                 <label>
                     <input 
                     type="text" 

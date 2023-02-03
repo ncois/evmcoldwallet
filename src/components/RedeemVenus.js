@@ -2,6 +2,7 @@ import "../styles/RedeemVenus.css"
 import { useState, useEffect } from 'react'
 import { ethers } from "ethers"
 import ShowQRCode from "./ShowQRCode"
+import QrScanner from "./QrScanner"
 import Warning from "./Warning"
 
 function RedeemVenus({ myPrivateKey, isInitialized, chain, api, blockExplorer }) {
@@ -97,7 +98,7 @@ function RedeemVenus({ myPrivateKey, isInitialized, chain, api, blockExplorer })
                     placeholder="Venus protocol (To)"
                     onChange={handleRecipientChange}
                     />
-                </label> <br></br>
+                </label> <QrScanner setData={setRecipient} /> <br></br>
                 <label>
                     <input 
                     type="text" 

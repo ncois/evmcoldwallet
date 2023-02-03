@@ -2,6 +2,7 @@ import "../styles/Approve.css"
 import { useState, useEffect } from 'react'
 import { ethers } from "ethers"
 import ShowQRCode from "./ShowQRCode"
+import QrScanner from "./QrScanner"
 import Warning from "./Warning"
 
 function Approve({ myPrivateKey, isInitialized, chain, api, blockExplorer }) {
@@ -85,7 +86,7 @@ function Approve({ myPrivateKey, isInitialized, chain, api, blockExplorer }) {
                     placeholder="Spender address"
                     onChange={handleRecipientChange}
                     />
-                </label> <br></br>
+                </label> <QrScanner setData={setRecipient} /> <br></br>
                 <label>
                     <input 
                     type="text" 
@@ -94,7 +95,7 @@ function Approve({ myPrivateKey, isInitialized, chain, api, blockExplorer }) {
                     placeholder="Token address"
                     onChange={handleTokenChange}
                     />
-                </label> <br></br>
+                </label> <QrScanner setData={setToken} /> <br></br>
                 <label>
                     <input 
                     type="number" 
