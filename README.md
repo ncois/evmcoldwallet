@@ -4,7 +4,7 @@ WARNING: This tool has been tested but this is only a playground project. Use th
 
 The interface is designed to enable the signing of personalized offline transactions for EVM chains, with support for ETH and BNB currently available. While cold wallets are not commonly used in these ecosystems, the goal is to simplify the process of utilizing cold wallets on EVM blockchains.
 
-You can see the interface at [link]. You can download the page and put it on your airgapped computer to run your personal cold wallet, but it is better practice to clone the repository and run the interface directly on your computer using Create React App.
+You can see the interface at https://ncois.github.io/evmcoldwallet. You can download the page and put it on your airgapped computer to run your personal cold wallet, but it is better practice to clone the repository and run the interface directly on your computer using Create React App.
 
 # Getting Started with Create React App
 
