@@ -146,7 +146,7 @@ function CustomTx({ myPrivateKey, isInitialized, chain, api, blockExplorer }) {
         <div className="evm-rectangle grey">
             <div className="evm-columns">
                 <p>Use this to create custom transactions.</p>
-                <p>Address and uint types are supported</p>
+                <p>Address and uint types are supported as additional arguments</p>
             </div> 
             <div className="evm-columns">
                 <form onSubmit={handleSubmit}>
