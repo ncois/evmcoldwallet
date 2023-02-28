@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/evmcoldwallet/static/css/main.1e0377ad.css",
+    "main.js": "/evmcoldwallet/static/js/main.f20be252.js",
+    "static/media/eth.png": "/evmcoldwallet/static/media/eth.a85b6de0dc4a013ae2f8.png",
+    "static/media/bsc.png": "/evmcoldwallet/static/media/bsc.d118beaf2abaa69fd832.png",
+    "static/media/del.png": "/evmcoldwallet/static/media/del.0877138dd0a5b2d30aa7.png",
+    "index.html": "/evmcoldwallet/index.html",
+    "main.1e0377ad.css.map": "/evmcoldwallet/static/css/main.1e0377ad.css.map",
+    "main.f20be252.js.map": "/evmcoldwallet/static/js/main.f20be252.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.1e0377ad.css",
+    "static/js/main.f20be252.js"
+  ]
+}
